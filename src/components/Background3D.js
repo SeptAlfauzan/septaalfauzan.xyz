@@ -1,9 +1,16 @@
-import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Suspense, useState } from "react";
 import { useRef } from "react";
 
-const Model = ({ yRotation, xRotation, scale }) => {
+const Model = ({ yRotation, xRotation, scale, isMobile }) => {
   const geometry = useRef()
+
+  useFrame(({clock})=>{
+    if(isMobile) {
+      geometry.current.rotation.x = clock.getElapsedTime() * 0.1
+      geometry.current.rotation.y = clock.getElapsedTime() * 0.1
+    }
+  })
   return (
     <points ref={geometry} rotation-x={yRotation} rotation-y={xRotation} scale={scale*0.1 + 0.1}>
       <torusKnotBufferGeometry args={[10, 3, 100, 16]} />
@@ -14,12 +21,12 @@ const Model = ({ yRotation, xRotation, scale }) => {
   )
 }
 
-const Background3D = ({yRotation, xRotation, scale}) => {
+const Background3D = ({yRotation, xRotation, scale, isMobile}) => {
     return (
         <div className="bg-white h-screen fixed w-full">
-            <Canvas frameloop="demand" className="ml-auto">
+            <Canvas {...(!isMobile && {frameloop: "demmand"})} className="ml-auto">
             <Suspense fal7lback={null}>
-                <Model yRotation={yRotation} xRotation={xRotation} scale={scale}/>
+                <Model  isMobile={isMobile} yRotation={yRotation} xRotation={xRotation} scale={scale}/>
                 {/* <OrbitControls/> */}
             </Suspense>
             </Canvas>
