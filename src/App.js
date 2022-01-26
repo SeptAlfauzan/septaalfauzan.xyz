@@ -25,6 +25,7 @@ export default function App() {
     setScale(position / (window.innerHeight + 1))
   };
   useEffect(() => {
+    console.log(scrollPosition)
     window.addEventListener("scroll", handleScroll);
 
     return () => {
