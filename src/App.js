@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { useState, useEffect } from "react";
+import Home from "./pages/home";
+import Experiences from "./pages/Experiences";
+import Projects from "./pages/Projects";
 
-function App() {
+export default function App() {
+  const [xRotation, setXRotation] = useState(0);
+  const [yRotation, setYRotation] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scale, setScale] = useState(0);
+
+  const handlerMouseMove = (e) => {
+    const middle = {
+      width: window.innerWidth / 2,
+      height: window.innerHeight / 2,
+    }
+    setXRotation((e.pageX - middle.width) * 0.001)
+    setYRotation((e.pageY - middle.height) * 0.001)
+  }
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+    setScale(position / (window.innerHeight + 1))
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div onMouseMove={(e) => handlerMouseMove(e)}>
+      <Home xRotation={xRotation} yRotation={yRotation} scale={scale} />
+      <Experiences/>
+      <Projects/>
     </div>
   );
 }
-
-export default App;
