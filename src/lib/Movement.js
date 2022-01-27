@@ -11,7 +11,4 @@ class Movement{
         }
     }
 }
-
-module.exports = {
-    Movement
-}
+export {Movement}

@@ -3,7 +3,7 @@ class DeviceChecker{
         const isMobile = window.matchMedia("(max-width: 767px)").matches
         if(isMobile) return true
         return false
-     };
+    };
 }
 
-module.exports = {DeviceChecker}
+export {DeviceChecker}
