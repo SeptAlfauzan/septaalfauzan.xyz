@@ -9,12 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@notionhq/client": "^2.1.0",
     "@splinetool/react-spline": "^2.2.1",
     "@splinetool/runtime": "^0.9.82",
+    "axios": "^0.27.2",
+    "fast-average-color": "^9.1.1",
     "framer-motion": "^6.5.1",
     "next": "12.2.3",
+    "notion-types": "^6.12.6",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0"
   },
   "devDependencies": {
     "@types/node": "18.0.6",

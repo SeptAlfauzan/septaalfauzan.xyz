@@ -6,6 +6,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import Sidenav from "../components/sidenav";
 import AboutMe from "../features/AboutMe";
+import Projects from "../features/Projects";
 import { Navigation } from "../interfaces/interfaces";
 
 const listNavigation: Navigation[] = [
@@ -66,6 +67,7 @@ const Home: NextPage = () => {
           />
         </div>
         <AboutMe />
+        <Projects />
       </main>
     </div>
   );

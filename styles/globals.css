@@ -1,7 +1,12 @@
 html {
   scroll-behavior: smooth;
 }
-
+#sidenav {
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 0 3px 0 0;
+  border-image-source: linear-gradient(to bottom, #743ad5, #d53a9d);
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
