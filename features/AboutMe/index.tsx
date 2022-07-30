@@ -20,7 +20,7 @@ const AboutMe: React.FC = () => {
   return (
     <div
       id="about-me"
-      className="text-zinc-300 w-full px-8 md:px-80 flex flex-col gap-5 items-center overflow-x-clip"
+      className="text-zinc-300 w-full px-8 md:px-80 flex flex-col gap-5 items-center overflow-x-clip py-20"
     >
       <Avatar imageSrc="https://avatars.githubusercontent.com/u/48860168?s=400&u=2508aff8532a41e614d4e10277dae5cb7cd1831f&v=4" />
       {/* short bio */}

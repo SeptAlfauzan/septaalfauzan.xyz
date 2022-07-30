@@ -8,9 +8,10 @@ import {
   TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
+
 import axios from "axios";
 
-interface Block {
+export interface Block {
   Name: TitlePropertyItemObjectResponse;
   Thumbnail: FilesPropertyItemObjectResponse;
   Description: RichTextPropertyItemObjectResponse;
@@ -20,19 +21,11 @@ interface Block {
   Created: CreatedTimePropertyItemObjectResponse;
 }
 
-const Projects: React.FC = () => {
-  const [projects, setProjects] = React.useState<Block[]>();
+interface Props {
+  projects: Block[];
+}
 
-  const getProjects = async () => await axios.get("/api/projects");
-
-  React.useEffect(() => {
-    const init = async () => {
-      const response = await (await getProjects()).data;
-      setProjects(response);
-    };
-    init();
-  }, []);
-
+const Projects: React.FC<Props> = ({ projects }) => {
   return (
     <div id="projects" className="px-8 md:px-80 relative py-36">
       <h3 className="absolute top-20 text-zinc-700 md:text-7xl text-5xl uppercase font-bold tracking-[.25em]">

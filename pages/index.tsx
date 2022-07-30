@@ -6,7 +6,9 @@ import React from "react";
 import Navbar from "../components/navbar";
 import Sidenav from "../components/sidenav";
 import AboutMe from "../features/AboutMe";
-import Projects from "../features/Projects";
+import Contact from "../features/Contact";
+import Projects, { Block } from "../features/Projects";
+import ProjectsServices from "../features/Projects/services/database";
 import { Navigation } from "../interfaces/interfaces";
 
 const listNavigation: Navigation[] = [
@@ -16,7 +18,11 @@ const listNavigation: Navigation[] = [
   { url: "/#contact", text: "Contact" },
 ];
 
-const Home: NextPage = () => {
+interface Props {
+  projects: Block[];
+}
+
+const Home: NextPage<Props> = ({ projects }) => {
   const BlobRef = React.useRef(null);
 
   const onLoad = (spline: Application) => {
@@ -67,10 +73,24 @@ const Home: NextPage = () => {
           />
         </div>
         <AboutMe />
-        <Projects />
+        <Projects projects={projects} />
+        <Contact />
       </main>
     </div>
   );
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const response = await ProjectsServices.getAll();
+  const projects: Block[] = response.results.map(
+    (result: any) => result.properties
+  );
+  return {
+    props: {
+      projects,
+    },
+    revalidate: 30,
+  };
+}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class Projects {
+class ProjectsServices {
   static getAll = async () => {
     const headers = {
       Authorization: `Bearer ${process.env.NOTION_SECRET_KEY}`,
@@ -12,7 +12,8 @@ class Projects {
       method: "POST",
       headers,
     });
+    console.log(test.data);
     return test.data;
   };
 }
-export default Projects;
+export default ProjectsServices;
