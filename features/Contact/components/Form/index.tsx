@@ -21,8 +21,14 @@ const Form: React.FC = () => {
     handleSubmit,
     watch,
     resetField,
-    formState: { errors, isValid },
-  } = useForm<Mail>();
+    formState: { errors, isValid, isDirty },
+  } = useForm<Mail>({
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
 
   const sendMail = async (data: Mail) => await axios.post("/api/mail", data);
 
@@ -105,8 +111,8 @@ const Form: React.FC = () => {
         <button
           type="submit"
           disabled={loading}
-          className={`text-white w-full py-2 rounded-lg mt-10 transition-all duration-150 ${
-            isValid
+          className={`text-white w-full py-2 rounded-lg mt-10 transition-all duration-300 disabled:bg-opacity-25 ${
+            true
               ? "bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500"
               : "bg-zinc-800 bg-opacity-70"
           }

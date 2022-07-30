@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import React from "react";
+import { GrGithub } from "react-icons/gr";
 import { Navigation } from "../../interfaces/interfaces";
 
 interface Props {
@@ -48,6 +49,14 @@ const Navbar: React.FC<Props> = ({ items }) => {
             </Link>
           </li>
         ))}
+        <li className="absolute right-24 cursor-pointer bottom-10 md:bottom-auto text-zinc-400">
+          <Link href="https://github.com/SeptAlfauzan/septaalfauzan.xyz">
+            <span className="flex flex-row items-center gap-3">
+              Source code
+              <GrGithub />
+            </span>
+          </Link>
+        </li>
       </ul>
     </div>
   );
