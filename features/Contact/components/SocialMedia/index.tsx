@@ -1,6 +1,6 @@
 import React from "react";
 import { GrGithub, GrLinkedin, GrMail } from "react-icons/gr";
-
+import { TbBrandNextjs, TbBrandNotion } from "react-icons/tb";
 const SocialMedia: React.FC = () => {
   return (
     <div className="py-10 w-full flex flex-wrap gap-5 justify-center">
@@ -33,6 +33,14 @@ const SocialMedia: React.FC = () => {
         >
           <GrMail />
         </a>
+      </div>
+      <div className="w-full flex justify-center pt-12">
+        <span className="flex gap-1 text-zinc-400 items-center">
+          Built with 💗 using nextjs
+          <TbBrandNextjs />
+          and notion API
+          <TbBrandNotion />
+        </span>
       </div>
     </div>
   );

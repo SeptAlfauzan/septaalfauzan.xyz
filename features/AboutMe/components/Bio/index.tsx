@@ -6,7 +6,7 @@ interface Props {
 
 const Bio: React.FC<Props> = ({ bio }) => {
   return (
-    <div className="px-8 py-4">
+    <div className="px-8 py-4 text-justify">
       <p>{bio}</p>
     </div>
   );

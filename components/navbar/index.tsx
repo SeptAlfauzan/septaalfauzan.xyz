@@ -36,6 +36,11 @@ const Navbar: React.FC<Props> = ({ items }) => {
             : "translate-y-0 opacity-100"
         } md:sticky absolute transition-all duration-700 z-20`}
       >
+        <li className="cursor-pointer">
+          <Link href={"/"}>
+            <p>Septa Alfauzan 👨‍💻</p>
+          </Link>
+        </li>
         {items.map((item: Navigation, i: number) => (
           <li
             onClick={() => setMinimize(true)}
