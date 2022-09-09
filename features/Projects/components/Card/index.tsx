@@ -51,12 +51,12 @@ const Card: React.FC<Props> = ({ item, imageUrl, alt }) => {
   };
 
   return (
-    <div className="w-full md:w-1/2 p-3">
+    <div className="w-full p-3">
       <div
         ref={imageRef}
-        className={`w-full flex flex-wrap rounded-lg px-3 py-3 relative bg-opacity-0 bg-gradient-to-bl from-[#8052ffa1] via-[#4150fa4f] to-[#111225]  md:h-40  h-80`}
+        className={`w-full flex flex-wrap rounded-lg px-3 py-3 relative bg-opacity-0 border border-zinc-600 md:h-52  h-80`}
       >
-        <div className=" md:w-32 w-full md:h-full h-44 relative rounded overflow-clip">
+        <div className=" md:w-80 w-full md:h-full h-44 relative rounded overflow-clip">
           <Image
             alt={alt}
             onLoadingComplete={handleGradient}
@@ -69,9 +69,14 @@ const Card: React.FC<Props> = ({ item, imageUrl, alt }) => {
             objectFit="cover"
           />
         </div>
+        {console.log(item?.Name)}
         <div className="flex flex-col gap-3  grow">
-          <h3 className="text-xl text-white ml-5">lorem</h3>
-          <h3 className="text-sm text-zinc-500 ml-5">lorem</h3>
+          <h3 className="text-xl text-white ml-5">
+            {item?.Description.rich_text.plain_text}
+          </h3>
+          <h3 className="text-sm text-zinc-500 ml-5">
+            {item?.Name.title.plain_text}
+          </h3>
           <div className="flex gap-3 mt-auto ml-auto ">
             {item?.Github && item.Github.url && (
               <Link href={item.Github.url}>

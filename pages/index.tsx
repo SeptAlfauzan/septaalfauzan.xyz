@@ -1,5 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import Navbar from "../components/navbar";
 import Sidenav from "../components/sidenav";
@@ -34,7 +36,33 @@ const Home: NextPage<Props> = ({ projects }) => {
       <main>
         <Landing />
         <AboutMe />
-        <Projects projects={projects} />
+        <div className="w-full min-h-screen relative">
+          <div className="px-8 md:px-80 flex flex-col gap-10">
+            <h3 className="text-zinc-300 text-6xl font-bold text-center">
+              Projects
+            </h3>
+            <p className="text-zinc-300">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+              explicabo ex, adipisci alias reiciendis corrupti ipsam ut corporis
+              exercitationem facilis voluptate quaerat culpa sapiente nam non
+              recusandae et inventore sunt.
+            </p>
+            <Link href={"/projects"}>
+              <button className="bg-gradient-to-bl from-[#8052ffa1]  to-[#ff0095] text-white w-fit px-7 py-1 text-xl rounded-full mx-auto">
+                see more
+              </button>
+            </Link>
+          </div>
+          <div className="w-full h-1/2 absolute bottom-0 after:absolute after:w-full after:h-1/2 after:bg-gradient-to-t from-[#18181b] to-[#11122500] after:bottom-0 after:content-['.']">
+            <Image
+              src={"/assets/images/Projects Cards.png"}
+              objectFit="contain"
+              layout="fill"
+              alt="projects card"
+            />
+          </div>
+        </div>
+        {/* <Projects projects={projects} /> */}
         <Contact />
         <></>
       </main>
