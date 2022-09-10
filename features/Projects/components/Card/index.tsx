@@ -4,7 +4,10 @@ import Image from "next/image";
 import { FiGithub } from "react-icons/fi";
 import {
   CreatedTimePropertyItemObjectResponse,
+  DatabaseObjectResponse,
   FilesPropertyItemObjectResponse,
+  ParagraphBlockObjectResponse,
+  RichTextItemResponse,
   RichTextPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
@@ -12,9 +15,9 @@ import {
 import Link from "next/link";
 
 interface Block {
-  Name: TitlePropertyItemObjectResponse;
+  Name: DatabaseObjectResponse;
   Thumbnail: FilesPropertyItemObjectResponse;
-  Description: RichTextPropertyItemObjectResponse;
+  Description: any;
   Github: UrlPropertyItemObjectResponse;
   Production: UrlPropertyItemObjectResponse;
   Download: UrlPropertyItemObjectResponse;
@@ -30,7 +33,11 @@ interface Props {
 const Card: React.FC<Props> = ({ item, imageUrl, alt }) => {
   const imageRef = React.useRef<HTMLDivElement>(null);
   const [gradient, setGradient] = React.useState<string>();
-
+  console.log(
+    item?.Description.rich_text[0]
+      ? item.Description.rich_text[0].plain_text
+      : ""
+  );
   const handleGradient = () => {
     if (imageRef.current) {
       const fac = new FastAverageColor();
@@ -54,12 +61,13 @@ const Card: React.FC<Props> = ({ item, imageUrl, alt }) => {
     <div className="w-full p-3">
       <div
         ref={imageRef}
-        className={`w-full flex flex-wrap rounded-lg px-3 py-3 relative bg-opacity-0 border border-zinc-600 md:h-52  h-80`}
+        className={`group hover:scale-105 duration-100 w-full flex flex-row rounded-lg px-3 py-3 relative bg-opacity-0 border border-zinc-600 min-h-[200px]`}
       >
-        <div className=" md:w-80 w-full md:h-full h-44 relative rounded overflow-clip">
+        <div className="md:w-[40%] w-full h-44 relative rounded overflow-clip">
           <Image
             alt={alt}
             onLoadingComplete={handleGradient}
+            className="grayscale group-hover:grayscale-0"
             src={
               item?.Thumbnail && item.Thumbnail.files[0]?.type == "file"
                 ? item.Thumbnail.files[0]?.file.url
@@ -69,13 +77,14 @@ const Card: React.FC<Props> = ({ item, imageUrl, alt }) => {
             objectFit="cover"
           />
         </div>
-        {console.log(item?.Name)}
-        <div className="flex flex-col gap-3  grow">
+        <div className="flex flex-col gap-3 md:w-[60%]">
           <h3 className="text-xl text-white ml-5">
-            {item?.Description.rich_text.plain_text}
+            {item?.Name ? item.Name.title[0].plain_text : ""}
           </h3>
           <h3 className="text-sm text-zinc-500 ml-5">
-            {item?.Name.title.plain_text}
+            {item?.Description.rich_text[0]
+              ? item.Description.rich_text[0].plain_text
+              : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore amet unde, obcaecati exercitationem soluta esse, animi porro asperiores inventore culpa ipsam fuga pariatur voluptatum deleniti ducimus aliquam officiis mollitia hic!"}
           </h3>
           <div className="flex gap-3 mt-auto ml-auto ">
             {item?.Github && item.Github.url && (
@@ -90,10 +99,14 @@ const Card: React.FC<Props> = ({ item, imageUrl, alt }) => {
               </Link>
             )}
             {item?.Production && item?.Production.url && (
-              <Link href={item.Production.url} target="_blank">
-                <span className="px-3 py-2 flex items-center rounded-full bg-purple-600 text-white group">
+              <Link href={item.Production.url}>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-2 flex items-center rounded-full bg-purple-600 text-white group hover:cursor-pointer"
+                >
                   <small>Production</small>
-                </span>
+                </a>
               </Link>
             )}
           </div>

@@ -30,8 +30,7 @@ const ProjectsPage: NextPage<Props> = ({ projectsData }) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Sidenav items={listNavigation} />
+      {/* <Sidenav items={listNavigation} /> */}
       <Navbar items={listNavigation} />
       <main className="bg-zinc-900 min-h-screen">
         <Projects projects={projectsData} />
@@ -42,7 +41,7 @@ const ProjectsPage: NextPage<Props> = ({ projectsData }) => {
 
 export default ProjectsPage;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const response = await ProjectsServices.getAll();
   const projects: Block[] = response.results.map(
     (result: any) => result.properties
@@ -51,6 +50,5 @@ export async function getStaticProps() {
     props: {
       projectsData: projects,
     },
-    revalidate: 10,
   };
 }

@@ -3,18 +3,18 @@ import Card from "./components/Card";
 
 import {
   CreatedTimePropertyItemObjectResponse,
+  DatabaseObjectResponse,
   FilesPropertyItemObjectResponse,
+  ParagraphBlockObjectResponse,
   RichTextPropertyItemObjectResponse,
   TitlePropertyItemObjectResponse,
   UrlPropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
-import axios from "axios";
-
 export interface Block {
-  Name: TitlePropertyItemObjectResponse;
+  Name: DatabaseObjectResponse;
   Thumbnail: FilesPropertyItemObjectResponse;
-  Description: RichTextPropertyItemObjectResponse;
+  Description: ParagraphBlockObjectResponse;
   Github: UrlPropertyItemObjectResponse;
   Production: UrlPropertyItemObjectResponse;
   Download: UrlPropertyItemObjectResponse;

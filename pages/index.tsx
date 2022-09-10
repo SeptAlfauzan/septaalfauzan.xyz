@@ -36,19 +36,16 @@ const Home: NextPage<Props> = ({ projects }) => {
       <main>
         <Landing />
         <AboutMe />
-        <div className="w-full min-h-screen relative">
+        <div className="w-full min-h-screen relative pt-[100px]" id="projects">
           <div className="px-8 md:px-80 flex flex-col gap-10">
             <h3 className="text-zinc-300 text-6xl font-bold text-center">
               Projects
             </h3>
-            <p className="text-zinc-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
-              explicabo ex, adipisci alias reiciendis corrupti ipsam ut corporis
-              exercitationem facilis voluptate quaerat culpa sapiente nam non
-              recusandae et inventore sunt.
+            <p className="text-zinc-300 text-center">
+              Click button bellow to see my projects.
             </p>
             <Link href={"/projects"}>
-              <button className="bg-gradient-to-bl from-[#8052ffa1]  to-[#ff0095] text-white w-fit px-7 py-1 text-xl rounded-full mx-auto">
+              <button className="bg-gradient-to-bl from-[#8052ffa1]  to-[#ff0095] text-white w-fit px-7 py-1 text-xl rounded-full mx-auto z-10">
                 see more
               </button>
             </Link>
