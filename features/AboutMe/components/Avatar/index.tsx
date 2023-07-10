@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 
 interface Props {
-  imageSrc: string;
+  imageSrc: string | StaticImageData;
 }
 const Avatar: React.FC<Props> = ({ imageSrc }) => {
   return (

@@ -67,7 +67,6 @@ const Card: React.FC<Props> = ({ item, imageUrl, alt }) => {
           <Image
             alt={alt}
             onLoadingComplete={handleGradient}
-            className="grayscale group-hover:grayscale-0"
             src={
               item?.Thumbnail && item.Thumbnail.files[0]?.type == "file"
                 ? item.Thumbnail.files[0]?.file.url
