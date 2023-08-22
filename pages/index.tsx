@@ -52,7 +52,7 @@ const Home: NextPage<Props> = ({ projects }) => {
           </div>
           <div className="w-full h-1/2 absolute bottom-0 after:absolute after:w-full after:h-1/2 after:bg-gradient-to-t from-[#18181b] to-[#11122500] after:bottom-0 after:content-['.']">
             <Image
-              src={"/assets/images/Projects Cards.png"}
+              src={"/assets/images/banner projects.png"}
               objectFit="contain"
               layout="fill"
               alt="projects card"

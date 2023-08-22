@@ -7,13 +7,14 @@ import ProfilePic from "../../public/assets/images/Inkedprofile coursera edit.jp
 const experiences = [
   {
     date: "Feb 2023 - Jul 2023",
-    job: "Android Developer - Internship",
-    company: "Bangkit Academy",
-    address: "-",
+    job: "Android Developer -  Apprenticeship",
+    company: "Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
+    address: "Bandung, West Java, Indonesia",
     description: `
-      \n Learn about native Android development using Kotlin.
-      \n Build interactive UI using XML and Jetpack Compose.
-      \n Create unit testing JUnit and UI testing using expresso. 
+      \n - Responsible to developed interactive native Android applications that not only meet the functional requirements but also stand out for their outstanding user experiences using Koltin and XML. 
+      \n - Conducted UX Research to gain valuable insights that were used in the UX Design process and for development decisions.
+      \n - Ensure the quality of Android applications by writing unit and instrumental testing using JUnit and Espresso
+      \n - Utilize Jetpack Compose to build a native Android app with visually appealing UI and engaging interfaces 
       `,
   },
   {
